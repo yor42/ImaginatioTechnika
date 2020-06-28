@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "DDD",
+        "DDD",
+        "DDD"
+    ],
+    
+    "key":
+    {
+        "D":
+        {
+            "item": "imgtechnika:d32_ingot"
+        }
+    },
+    
+    "result":
+    {
+    "item": "imgtechnika:d32_block"
+    }
+}

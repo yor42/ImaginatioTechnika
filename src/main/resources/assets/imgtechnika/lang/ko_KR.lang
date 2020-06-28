@@ -1,0 +1,9 @@
+item.pureoriginium.name=순오리지늄
+item.D32_INGOT.name=D32강 주괴
+item.D32_NUGGET.name=D32강 조각
+item.rma7024_ingot.name=RMA70-24 주괴
+item.rma7024_nugget.name=RMA70-24 조각
+item.D32_PICKAXE.name=D32강 곡괭이
+
+tile.D32_BLOCK.name=D32강 블럭
+tile.RMA7024_ORE.name=RMA70-24 광석

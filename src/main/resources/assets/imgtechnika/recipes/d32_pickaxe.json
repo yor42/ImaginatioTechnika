@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "DDD",
+        " S ",
+        " S "
+    ],
+    
+    "key":
+    {
+        "D":
+        {
+            "item": "imgtechnika:d32_ingot"
+        },
+        "S":
+        {
+            "item": "minecraft:stick"
+        }
+    },
+    
+    "result":
+    {
+    "item": "imgtechnika:d32_pickaxe"
+    }
+}

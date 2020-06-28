@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "B"
+    ],
+    
+    "key":
+    {
+        "B":
+        {
+            "item": "imgtechnika:d32_block"
+        }
+    },
+    
+    "result":
+    {
+    "item": "imgtechnika:d32_ingot",
+    "count": 9
+    }
+}

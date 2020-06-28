@@ -1,0 +1,10 @@
+item.pureoriginium.name=Pure Originium
+item.D32_INGOT.name=D32 Steel Ingot
+item.D32_NUGGET.name=D32 Steel Nugget
+item.rma7024_ingot.name=RMA70-24 Ingot
+item.rma7024_nugget.name=RMA70-24 Nugget
+
+item.D32_PICKAXE.name=D32 Steel Pickaxe
+
+tile.D32_BLOCK.name=D32 Steel Block
+tile.RMA7024_ORE.name=RMA70-24 Ore

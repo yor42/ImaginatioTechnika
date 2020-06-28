@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "NNN",
+        "NNN",
+        "NNN"
+    ],
+    
+    "key":
+    {
+        "N":
+        {
+            "item": "imgtechnika:d32_nugget"
+        }
+    },
+    
+    "result":
+    {
+    "item": "imgtechnika:d32_ingot"
+    }
+}
