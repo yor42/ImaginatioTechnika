@@ -8,7 +8,7 @@ import yor42.imaginatiotechnika.gameobjects.blocks.fluids.FluidLiquid;
 
 public class FluidInit {
 
-    public static final Fluid COLLAPSE_FLUID = new FluidLiquid("collapse_fluid", new ResourceLocation(ImaginatioTechnika.MOD_ID+":"+"blocks/collapse_fluid_still"), new ResourceLocation(ImaginatioTechnika.MOD_ID+":"+"blocks/collapse_fluid_flow"));
+    public static final Fluid COLLAPSE_FLUID = new FluidLiquid("collapse_fluid", new ResourceLocation(ImaginatioTechnika.MOD_ID+":"+"blocks/collapse_fluid_still"), new ResourceLocation(ImaginatioTechnika.MOD_ID+":"+"blocks/collapse_fluid_flow"), 12);
 
     public static void registerFluid(){
         registerFluid(COLLAPSE_FLUID);

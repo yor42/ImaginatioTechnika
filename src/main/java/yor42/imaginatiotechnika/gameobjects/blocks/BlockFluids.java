@@ -10,6 +10,10 @@ import yor42.imaginatiotechnika.init.BlockInit;
 import yor42.imaginatiotechnika.init.ItemInit;
 
 public class BlockFluids extends BlockFluidClassic {
+
+
+
+
     public BlockFluids(String name, Fluid fluid, Material material){
         super(fluid, material);
         setUnlocalizedName(name);

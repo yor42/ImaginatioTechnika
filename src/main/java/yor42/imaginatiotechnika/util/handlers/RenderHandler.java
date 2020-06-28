@@ -13,5 +13,18 @@ import yor42.imaginatiotechnika.init.BlockInit;
 public class RenderHandler {
 
     public static void registerCustomMeshesandStates(){
+        ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(BlockInit.COLLAPSE_FLUID), new ItemMeshDefinition() {
+            @Override
+            public ModelResourceLocation getModelLocation(ItemStack stack) {
+                return new ModelResourceLocation(ImaginatioTechnika.MOD_ID+":"+"collapse_fluid", "fluid");
+            }
+        });
+
+        ModelLoader.setCustomStateMapper(BlockInit.COLLAPSE_FLUID, new StateMapperBase() {
+            @Override
+            protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+                return new ModelResourceLocation(ImaginatioTechnika.MOD_ID+":"+"collapse_fluid", "fluid");
+            }
+        });
     }
 }
