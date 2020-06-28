@@ -1,4 +1,4 @@
-package yor42.imaginatiotechnika.gameobjects.Blocks.fluids;
+package yor42.imaginatiotechnika.gameobjects.blocks.fluids;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;

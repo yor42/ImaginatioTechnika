@@ -3,10 +3,10 @@ package yor42.imaginatiotechnika.init;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.util.EnumHelper;
-import yor42.imaginatiotechnika.gameobjects.Items.ItemBase;
-import yor42.imaginatiotechnika.gameobjects.Tools.ToolAxe;
-import yor42.imaginatiotechnika.gameobjects.Tools.ToolPickaxe;
-import yor42.imaginatiotechnika.gameobjects.Tools.ToolShovel;
+import yor42.imaginatiotechnika.gameobjects.items.ItemBase;
+import yor42.imaginatiotechnika.gameobjects.tools.ToolAxe;
+import yor42.imaginatiotechnika.gameobjects.tools.ToolPickaxe;
+import yor42.imaginatiotechnika.gameobjects.tools.ToolShovel;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,6 @@
 package yor42.imaginatiotechnika;
 
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -13,7 +12,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import yor42.imaginatiotechnika.gameobjects.Creativetabs.ImaginatioTools;
 import yor42.imaginatiotechnika.init.BlockInit;
 import yor42.imaginatiotechnika.init.FluidInit;
 import yor42.imaginatiotechnika.init.ItemInit;

@@ -1,4 +1,4 @@
-package yor42.imaginatiotechnika.gameobjects.Creativetabs;
+package yor42.imaginatiotechnika.gameobjects.creativetabs;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;

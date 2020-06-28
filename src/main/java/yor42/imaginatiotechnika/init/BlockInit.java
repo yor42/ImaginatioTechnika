@@ -3,8 +3,8 @@ package yor42.imaginatiotechnika.init;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import yor42.imaginatiotechnika.gameobjects.Blocks.BlockBase;
-import yor42.imaginatiotechnika.gameobjects.Blocks.BlockFluids;
+import yor42.imaginatiotechnika.gameobjects.blocks.BlockBase;
+import yor42.imaginatiotechnika.gameobjects.blocks.BlockFluids;
 
 import java.util.ArrayList;
 import java.util.List;

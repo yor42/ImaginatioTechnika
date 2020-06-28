@@ -1,4 +1,4 @@
-package yor42.imaginatiotechnika.gameobjects.Blocks;
+package yor42.imaginatiotechnika.gameobjects.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

@@ -1,9 +1,8 @@
-package yor42.imaginatiotechnika.gameobjects.Blocks;
+package yor42.imaginatiotechnika.gameobjects.blocks;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.scoreboard.IScoreCriteria;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;

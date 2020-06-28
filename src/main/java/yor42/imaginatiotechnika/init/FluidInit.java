@@ -4,7 +4,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import yor42.imaginatiotechnika.ImaginatioTechnika;
-import yor42.imaginatiotechnika.gameobjects.Blocks.fluids.FluidLiquid;
+import yor42.imaginatiotechnika.gameobjects.blocks.fluids.FluidLiquid;
 
 public class FluidInit {
 
