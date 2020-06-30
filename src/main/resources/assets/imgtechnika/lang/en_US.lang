@@ -8,3 +8,5 @@ item.D32_PICKAXE.name=D32 Steel Pickaxe
 
 tile.D32_BLOCK.name=D32 Steel Block
 tile.RMA7024_ORE.name=RMA70-24 Ore
+
+container.originium_generator=Originium Generator

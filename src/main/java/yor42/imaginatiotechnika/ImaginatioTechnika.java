@@ -11,13 +11,16 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import yor42.imaginatiotechnika.init.BlockInit;
 import yor42.imaginatiotechnika.init.FluidInit;
 import yor42.imaginatiotechnika.init.ItemInit;
 import yor42.imaginatiotechnika.proxy.ClientProxy;
 import yor42.imaginatiotechnika.util.IHasModel;
+import yor42.imaginatiotechnika.util.handlers.GuiHandler;
 import yor42.imaginatiotechnika.util.handlers.RenderHandler;
+import yor42.imaginatiotechnika.util.handlers.TileEntityHandler;
 import yor42.imaginatiotechnika.world.gen.oreworldgen;
 
 @Mod(
@@ -62,7 +65,7 @@ public class ImaginatioTechnika {
      */
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-
+        NetworkRegistry.INSTANCE.registerGuiHandler(ImaginatioTechnika.INSTANCE, new GuiHandler());
     }
 
     /**
@@ -111,6 +114,7 @@ public class ImaginatioTechnika {
        @SubscribeEvent
        public static void addBlocks(RegistryEvent.Register<Block> event) {
            event.getRegistry().registerAll(BlockInit.BLOCK_LIST.toArray(new Block[0]));
+           TileEntityHandler.registerTileentity();
        }
 
        @SubscribeEvent
