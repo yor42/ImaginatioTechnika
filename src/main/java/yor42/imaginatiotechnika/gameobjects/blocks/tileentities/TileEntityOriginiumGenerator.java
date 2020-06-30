@@ -13,6 +13,7 @@ import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import yor42.imaginatiotechnika.Configs;
 import yor42.imaginatiotechnika.init.ItemInit;
 import yor42.imaginatiotechnika.power.MachineEnergyStorage;
 
@@ -47,7 +48,7 @@ public class TileEntityOriginiumGenerator extends TileEntity implements ITickabl
 
     private int getFuelValue(ItemStack stack) {
         if(stack.getItem() == ItemInit.pureoriginium){
-            return 1500;
+            return Configs.POWERGEN.ORIGINIUM_BURNTIME;
         }
         else return 0;
     }

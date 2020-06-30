@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import yor42.imaginatiotechnika.ImaginatioTechnika;
 import yor42.imaginatiotechnika.gameobjects.blocks.container.ContainerOriginiumGenenrator;
 import yor42.imaginatiotechnika.gameobjects.blocks.tileentities.TileEntityOriginiumGenerator;
+import yor42.imaginatiotechnika.power.MachineEnergyStorage;
 
 import java.util.Objects;
 
@@ -23,17 +24,18 @@ public class GuiOriginiumGenerator extends GuiContainer {
         this.tileentity = tileentity;
     }
 
+
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         String tileName = Objects.requireNonNull(this.tileentity.getDisplayName()).getUnformattedText();
         this.fontRenderer.drawString(tileName, (this.xSize/2 - this.fontRenderer.getStringWidth(tileName))/2,6, 16777215);
         this.fontRenderer.drawString(this.player.getDisplayName().getUnformattedText(),7,this.ySize-94,16777215);
-        this.fontRenderer.drawString(Integer.toString(this.tileentity.getEnergyStored()),115,72,16777215);
+        this.fontRenderer.drawString(this.tileentity.getEnergyStored() +"/"+this.tileentity.getMaxEnergyStored()+"FE",115,72,16777215);
     }
 
     private int getBurnTimeScaled(int pixels){
         int i = this.tileentity.Burntime;
-        return i!= 0? i*pixels/25:0;
+        return i!= 0? (i*pixels)/25:0;
     }
 
     private int getStoredPowerScaled(int pixels){

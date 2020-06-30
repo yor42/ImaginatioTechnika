@@ -1,12 +1,14 @@
 package yor42.imaginatiotechnika;
 
 import net.minecraftforge.common.config.Config;
+import scala.tools.nsc.interpreter.Power;
 
 @Config(modid = ImaginatioTechnika.MOD_ID)
 public class Configs {
 
     public static modules MODULES = new modules();
     public static Worldgen WORLDGEN = new Worldgen();
+    public static PowerGen POWERGEN = new PowerGen();
 
     public static class modules{
 
@@ -28,6 +30,13 @@ public class Configs {
 
         @Config.Comment("Max spawn height of RMA70-24 ore, Default = 15")
         public int RMA7024_Maxheight = 15;
+
+    }
+
+    public static class PowerGen{
+
+        @Config.Comment("Total Burning time of Originium Generator")
+        public int ORIGINIUM_BURNTIME = 1500;
 
     }
 
