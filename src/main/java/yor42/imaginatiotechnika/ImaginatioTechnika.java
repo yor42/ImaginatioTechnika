@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -13,6 +14,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import yor42.imaginatiotechnika.init.BlockInit;
 import yor42.imaginatiotechnika.init.FluidInit;
 import yor42.imaginatiotechnika.init.ItemInit;
@@ -22,6 +26,7 @@ import yor42.imaginatiotechnika.util.handlers.GuiHandler;
 import yor42.imaginatiotechnika.util.handlers.RenderHandler;
 import yor42.imaginatiotechnika.util.handlers.TileEntityHandler;
 import yor42.imaginatiotechnika.world.gen.oreworldgen;
+
 
 @Mod(
         modid = ImaginatioTechnika.MOD_ID,
@@ -36,6 +41,8 @@ public class ImaginatioTechnika {
 
     @SidedProxy(clientSide = "yor42.imaginatiotechnika.proxy.ClientProxy")
     public static ClientProxy Clientproxy;
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     /** This is the instance of your mod as created by Forge. It will never be null. */
     @Mod.Instance(MOD_ID)
@@ -66,6 +73,19 @@ public class ImaginatioTechnika {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         NetworkRegistry.INSTANCE.registerGuiHandler(ImaginatioTechnika.INSTANCE, new GuiHandler());
+
+        if (Loader.instance().getIndexedModList().containsKey("animcolle")) {
+            LOGGER.info("Hello Animecolle! Are you ready for some dimension travelling?");
+            //todo add init for quantum transporter
+        }
+        if (Loader.instance().getIndexedModList().containsKey("shincolle")) {
+            LOGGER.info("Oh shincolle! nice to meet you here! Long time no see, eh?");
+            //todo add init for electric drydock
+        }
+        if (Loader.instance().getIndexedModList().containsKey("frens")) {
+            LOGGER.info("Hi furenzu! can i add some changes to make it bit more techy?");
+            //todo add init for sandster infuser and assembler recipe for lucky beast item
+        }
     }
 
     /**

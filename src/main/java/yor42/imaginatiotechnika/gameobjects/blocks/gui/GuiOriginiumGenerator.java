@@ -5,6 +5,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
+import yor42.imaginatiotechnika.Configs;
 import yor42.imaginatiotechnika.ImaginatioTechnika;
 import yor42.imaginatiotechnika.gameobjects.blocks.container.ContainerOriginiumGenenrator;
 import yor42.imaginatiotechnika.gameobjects.blocks.tileentities.TileEntityOriginiumGenerator;
@@ -27,15 +28,16 @@ public class GuiOriginiumGenerator extends GuiContainer {
 
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+        super.drawGuiContainerForegroundLayer(mouseX, mouseY);
         String tileName = Objects.requireNonNull(this.tileentity.getDisplayName()).getUnformattedText();
         this.fontRenderer.drawString(tileName, (this.xSize/2 - this.fontRenderer.getStringWidth(tileName))/2,6, 16777215);
         this.fontRenderer.drawString(this.player.getDisplayName().getUnformattedText(),7,this.ySize-94,16777215);
-        this.fontRenderer.drawString(this.tileentity.getEnergyStored() +"/"+this.tileentity.getMaxEnergyStored()+"FE",115,72,16777215);
+        this.fontRenderer.drawString(this.tileentity.getEnergyStored() +"/"+this.tileentity.getMaxEnergyStored()+" FE",90,72,16777215);
     }
 
     private int getBurnTimeScaled(int pixels){
         int i = this.tileentity.Burntime;
-        return i!= 0? (i*pixels)/25:0;
+        return i!= 0? i*pixels/100 :0;
     }
 
     private int getStoredPowerScaled(int pixels){
@@ -47,7 +49,6 @@ public class GuiOriginiumGenerator extends GuiContainer {
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-
         GlStateManager.color(1.0f, 1.0f, 1.0f);
         this.mc.getTextureManager().bindTexture(TEXTURE);
         this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0,0,this.xSize,this.ySize);
@@ -57,7 +58,5 @@ public class GuiOriginiumGenerator extends GuiContainer {
 
         int p = this.getStoredPowerScaled(75);
         this.drawTexturedModalRect(this.guiLeft+152, this.guiTop+7, 176, 32, 16, 76-p);
-
-
     }
 }
