@@ -14,6 +14,7 @@ import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import yor42.imaginatiotechnika.Configs;
+import yor42.imaginatiotechnika.gameobjects.blocks.BlockOriginiumGenerator;
 import yor42.imaginatiotechnika.init.ItemInit;
 import yor42.imaginatiotechnika.power.MachineEnergyStorage;
 
@@ -30,8 +31,18 @@ public class TileEntityOriginiumGenerator extends TileEntity implements ITickabl
     private String name;
     public int Burntime;
 
+    public boolean isactive(){
+        return this.Burntime>0;
+    }
+
+
     @Override
     public void update() {
+
+        if (isactive()){
+            BlockOriginiumGenerator.setState(true, world, pos);
+        }
+
         if (!handler.getStackInSlot(0).isEmpty() && isItemFuel(handler.getStackInSlot(0))){
             Burntime++;
             if(Burntime == 100){

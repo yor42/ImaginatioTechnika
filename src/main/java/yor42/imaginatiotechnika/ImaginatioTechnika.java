@@ -19,6 +19,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import yor42.imaginatiotechnika.gameobjects.creativetabs.ImaginatioMachines;
 import yor42.imaginatiotechnika.gameobjects.creativetabs.ImaginatioResources;
 import yor42.imaginatiotechnika.gameobjects.creativetabs.ImaginatioTools;
 import yor42.imaginatiotechnika.init.BlockInit;
@@ -48,6 +49,7 @@ public class ImaginatioTechnika {
 
     public static final CreativeTabs ImaginatioResources = new ImaginatioResources("imaginatiotechnikaresources");
     public static final CreativeTabs ImaginatioTools = new ImaginatioTools("ImaginatioTools");
+    public static final CreativeTabs ImaginatioMachines = new ImaginatioMachines("imaginatiotechnikamachines");
 
     private static final Logger LOGGER = LogManager.getLogger();
 

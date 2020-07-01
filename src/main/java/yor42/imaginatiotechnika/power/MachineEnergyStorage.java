@@ -34,27 +34,6 @@ public class MachineEnergyStorage extends EnergyStorage {
         return super.extractEnergy(maxExtract, simulate);
     }
 
-    @Override
-    public int getEnergyStored(){
-        return super.getEnergyStored();
-    }
-
-    @Override
-    public int getMaxEnergyStored(){
-        return super.getMaxEnergyStored();
-    }
-
-    @Override
-    public boolean canExtract(){
-        return super.canExtract();
-    }
-
-
-    @Override
-    public boolean canReceive(){
-        return super.canReceive();
-    }
-
     public void readfromNBT(NBTTagCompound compound){
         this.energy = compound.getInteger("energy");
         this.capacity = compound.getInteger("capacity");

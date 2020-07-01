@@ -13,11 +13,11 @@ import java.util.List;
 public class BlockInit {
     public static final List<Block> BLOCK_LIST = new ArrayList<>();
 
-    public static final Block D32_BLOCK = new BlockBase("D32_BLOCK", Material.IRON, CreativeTabs.BUILDING_BLOCKS);
-    public static final Block RMA7024_ORE = new BlockBase("RMA7024_ORE", Material.ROCK, CreativeTabs.BUILDING_BLOCKS);
+    public static final Block D32_BLOCK = new BlockBase("d32_block", Material.IRON, CreativeTabs.BUILDING_BLOCKS);
+    public static final Block RMA7024_ORE = new BlockBase("rma7024_ore", Material.ROCK, CreativeTabs.BUILDING_BLOCKS);
 
     //machines
-    public static final Block ORIGINIUM_GENERATOR = new BlockOriginiumGenerator("ORIGINIUM_GENERATOR");
+    public static final Block ORIGINIUM_GENERATOR = new BlockOriginiumGenerator("originium_generator");
 
     //liquid
     public static final Block COLLAPSE_FLUID = new BlockFluids("collapse_fluid", FluidInit.COLLAPSE_FLUID, Material.LAVA);
