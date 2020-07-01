@@ -1,7 +1,9 @@
 package yor42.imaginatiotechnika;
 
 import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -17,6 +19,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import yor42.imaginatiotechnika.gameobjects.creativetabs.ImaginatioResources;
+import yor42.imaginatiotechnika.gameobjects.creativetabs.ImaginatioTools;
 import yor42.imaginatiotechnika.init.BlockInit;
 import yor42.imaginatiotechnika.init.FluidInit;
 import yor42.imaginatiotechnika.init.ItemInit;
@@ -41,6 +45,9 @@ public class ImaginatioTechnika {
 
     @SidedProxy(clientSide = "yor42.imaginatiotechnika.proxy.ClientProxy")
     public static ClientProxy Clientproxy;
+
+    public static final CreativeTabs ImaginatioResources = new ImaginatioResources("imaginatiotechnikaresources");
+    public static final CreativeTabs ImaginatioTools = new ImaginatioTools("ImaginatioTools");
 
     private static final Logger LOGGER = LogManager.getLogger();
 

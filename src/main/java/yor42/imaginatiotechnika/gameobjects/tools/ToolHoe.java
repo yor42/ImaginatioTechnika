@@ -9,7 +9,7 @@ import static yor42.imaginatiotechnika.ImaginatioTechnika.Clientproxy;
 
 public class ToolHoe extends ItemHoe implements IHasModel {
 
-    protected ToolHoe(String name, ToolMaterial material, CreativeTabs Tab) {
+    public ToolHoe(String name, ToolMaterial material, CreativeTabs Tab) {
         super(material);
         //레지스트리 이름
         setRegistryName(name);
