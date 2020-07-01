@@ -16,3 +16,7 @@ Inter-Mod Support
   Anime Collection By Dane9k - RF-Powered Multiblock Summoning Altar, Custom Spawning Recipe  
   Shincolle by PinkaLulan - RF-Powered Dock that doesnt need lava anymore. but consumes LOT of power
 
+Credit
+------
+Rongmario for help   
+Dane9t for animecolle and help
