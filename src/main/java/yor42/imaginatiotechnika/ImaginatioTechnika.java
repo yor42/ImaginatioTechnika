@@ -25,6 +25,7 @@ import yor42.imaginatiotechnika.gameobjects.creativetabs.ImaginatioTools;
 import yor42.imaginatiotechnika.init.BlockInit;
 import yor42.imaginatiotechnika.init.FluidInit;
 import yor42.imaginatiotechnika.init.ItemInit;
+import yor42.imaginatiotechnika.plugin.Oredict;
 import yor42.imaginatiotechnika.proxy.ClientProxy;
 import yor42.imaginatiotechnika.util.IHasModel;
 import yor42.imaginatiotechnika.util.handlers.GuiHandler;
@@ -82,6 +83,7 @@ public class ImaginatioTechnika {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         NetworkRegistry.INSTANCE.registerGuiHandler(ImaginatioTechnika.INSTANCE, new GuiHandler());
+        Oredict.registerOreDict();
 
         if (Loader.instance().getIndexedModList().containsKey("animcolle")) {
             LOGGER.info("Hello Animecolle! Are you ready for some dimension travelling?");
@@ -93,7 +95,7 @@ public class ImaginatioTechnika {
         }
         if (Loader.instance().getIndexedModList().containsKey("frens")) {
             LOGGER.info("Hi furenzu! can i add some changes to make it bit more techy?");
-            //todo add init for sandster infuser and assembler recipe for lucky beast item
+            //todo add init for sandster bun item reipe for infuser. and maybe add recipe for lucky beast
         }
     }
 

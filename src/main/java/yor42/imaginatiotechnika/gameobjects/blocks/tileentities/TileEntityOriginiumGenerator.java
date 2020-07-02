@@ -29,7 +29,7 @@ public class TileEntityOriginiumGenerator extends TileEntity implements ITickabl
     //count of item slots
     public ItemStackHandler handler = new ItemStackHandler(1);
 
-    private MachineEnergyStorage storage = new MachineEnergyStorage(250000);
+    private MachineEnergyStorage storage = new MachineEnergyStorage(25000);
     public int energy = storage.getEnergyStored();
     private String name;
     public int Burntime;

@@ -9,6 +9,7 @@ public class Configs {
     public static modules MODULES = new modules();
     public static Worldgen WORLDGEN = new Worldgen();
     public static PowerGen POWERGEN = new PowerGen();
+    public static Machines MACHINES = new Machines();
 
     public static class modules{
 
@@ -37,7 +38,12 @@ public class Configs {
 
         @Config.Comment("Total Burning time of Originium Generator")
         public int ORIGINIUM_BURNTIME = 1500;
+    }
 
+    public static class Machines{
+
+        @Config.Comment("Power useage per tick of Infuser")
+        public int INFUSER_RF_PERTICK = 100;
     }
 
 }
