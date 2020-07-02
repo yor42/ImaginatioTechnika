@@ -51,6 +51,10 @@ public class TileEntityOriginiumGenerator extends TileEntity implements ITickabl
                 Burntime = 0;
             }
         }
+        else if(handler.getStackInSlot(0).isEmpty()){
+            Burntime = 0;
+            BlockOriginiumGenerator.setState(false, world, pos);
+        }
     }
 
     private boolean isItemFuel(ItemStack item) {
