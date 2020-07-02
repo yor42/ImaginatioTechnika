@@ -1,5 +1,6 @@
 package yor42.imaginatiotechnika.gameobjects.blocks.tileentities;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -19,6 +20,8 @@ import yor42.imaginatiotechnika.init.ItemInit;
 import yor42.imaginatiotechnika.power.MachineEnergyStorage;
 
 import javax.annotation.Nullable;
+
+import static yor42.imaginatiotechnika.gameobjects.blocks.BlockOriginiumGenerator.FACING;
 
 public class TileEntityOriginiumGenerator extends TileEntity implements ITickable {
 
@@ -70,8 +73,12 @@ public class TileEntityOriginiumGenerator extends TileEntity implements ITickabl
 
     @Override
     public <T> T getCapability(Capability <T> capability, EnumFacing facing){
-        if(capability == CapabilityEnergy.ENERGY)
-            return (T) this.storage;
+        IBlockState state = getWorld().getBlockState(getPos());
+        if(facing == state.getValue(FACING).getOpposite()) {
+            if (capability == CapabilityEnergy.ENERGY) {
+                return (T) this.storage;
+            }
+        }
         if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return (T)this.handler;
         return super.getCapability(capability, facing);
     }

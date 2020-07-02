@@ -5,6 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import yor42.imaginatiotechnika.gameobjects.blocks.BlockBase;
 import yor42.imaginatiotechnika.gameobjects.blocks.BlockFluids;
+import yor42.imaginatiotechnika.gameobjects.blocks.BlockInfuser;
 import yor42.imaginatiotechnika.gameobjects.blocks.BlockOriginiumGenerator;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class BlockInit {
 
     //machines
     public static final Block ORIGINIUM_GENERATOR = new BlockOriginiumGenerator("originium_generator");
+    public static final Block INFUSER = new BlockInfuser("infuser");
 
     //liquid
     public static final Block COLLAPSE_FLUID = new BlockFluids("collapse_fluid", FluidInit.COLLAPSE_FLUID, Material.LAVA);

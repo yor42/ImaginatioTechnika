@@ -7,7 +7,7 @@ public class FluidLiquid extends Fluid {
 
     public FluidLiquid(String name, ResourceLocation still, ResourceLocation flow) {
         super(name, still, flow);
-        new FluidLiquid(name,still,flow,0);
+        new FluidLiquid(name,still,flow,10);
     }
 
     public FluidLiquid(String name, ResourceLocation still, ResourceLocation flow, int luminosity) {
