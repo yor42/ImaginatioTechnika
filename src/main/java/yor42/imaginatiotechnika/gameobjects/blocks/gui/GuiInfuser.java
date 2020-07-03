@@ -37,7 +37,7 @@ public class GuiInfuser extends GuiContainer {
 
     private int getProgressScaled(int pixels){
         int i = this.tileentity.progress;
-        return i != 0 ? i * pixels / 100 : 0;
+        return i != 0 ? i * pixels / 800 : 0;
     }
 
     @Override

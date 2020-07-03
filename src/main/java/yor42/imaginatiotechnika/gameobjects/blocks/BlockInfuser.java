@@ -108,8 +108,8 @@ public class BlockInfuser extends BlockBase {
 
     @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state){
-        TileEntityOriginiumGenerator tileentity = (TileEntityOriginiumGenerator)worldIn.getTileEntity(pos);
-        worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), tileentity.handler.getStackInSlot(0)));
+        TileEntityInfuser tileentity = (TileEntityInfuser)worldIn.getTileEntity(pos);
+        worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), tileentity.stackhandler.getStackInSlot(0)));
         super.breakBlock(worldIn, pos, state);
     }
 

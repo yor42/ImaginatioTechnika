@@ -1,5 +1,6 @@
 package yor42.imaginatiotechnika.gameobjects.blocks.tileentities;
 
+import net.minecraft.block.BlockFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -10,7 +11,6 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
@@ -34,29 +34,41 @@ public class TileEntityOriginiumGenerator extends TileEntity implements ITickabl
     private String name;
     public int Burntime;
 
-    public boolean isactive(){
-        return this.Burntime>0;
+    public boolean isActive()
+    {
+        return this.Burntime > 0;
     }
-
 
     @Override
     public void update() {
+        boolean flag = this.isActive();
+        boolean flag1 = false;
 
-        if (isactive()){
-            BlockOriginiumGenerator.setState(true, world, pos);
-        }
 
         if (!handler.getStackInSlot(0).isEmpty() && isItemFuel(handler.getStackInSlot(0))){
-            Burntime++;
-            if(Burntime == 100){
-                energy += getFuelValue(handler.getStackInSlot(0));
-                handler.getStackInSlot(0).shrink(1);
-                Burntime = 0;
+            if(this.energy < getMaxEnergyStored()) {
+                Burntime++;
+                flag1 = true;
+                if (Burntime == 100) {
+                    energy += getFuelValue(handler.getStackInSlot(0));
+                    handler.getStackInSlot(0).shrink(1);
+                    Burntime = 0;
+                }
             }
         }
-        else if(handler.getStackInSlot(0).isEmpty()){
-            Burntime = 0;
-            BlockOriginiumGenerator.setState(false, world, pos);
+
+        if(this.energy > getMaxEnergyStored()){
+            this.energy = getMaxEnergyStored();
+        }
+
+        if (flag != this.isActive())
+        {
+            flag1 = true;
+            BlockOriginiumGenerator.setState(this.isActive(), this.world, this.pos);
+        }
+        if (flag1)
+        {
+            this.markDirty();
         }
     }
 

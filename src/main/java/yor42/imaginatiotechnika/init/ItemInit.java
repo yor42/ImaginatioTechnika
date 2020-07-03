@@ -2,8 +2,10 @@ package yor42.imaginatiotechnika.init;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraftforge.common.util.EnumHelper;
 import yor42.imaginatiotechnika.ImaginatioTechnika;
+import yor42.imaginatiotechnika.gameobjects.creativetabs.ImaginatioResources;
 import yor42.imaginatiotechnika.gameobjects.items.ItemBase;
 import yor42.imaginatiotechnika.gameobjects.tools.ToolAxe;
 import yor42.imaginatiotechnika.gameobjects.tools.ToolHoe;
@@ -28,6 +30,7 @@ public class ItemInit {
     public static final Item rma7024_ingot = new ItemBase("rma7024_ingot", ImaginatioTechnika.ImaginatioResources);
     public static final Item rma7024_nugget = new ItemBase("rma7024_nugget", ImaginatioTechnika.ImaginatioResources);
     public static final Item wisdomcube = new ItemBase("wisdomcube", ImaginatioTechnika.ImaginatioResources);
+    public static final Item manganese_ingot = new ItemBase("manganese_ingot", ImaginatioTechnika.ImaginatioResources);
 
     //도구
     public static final Item d32_pickaxe = new ToolPickaxe("d32_pickaxe", TOOL_D32, ImaginatioTechnika.ImaginatioTools);
