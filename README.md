@@ -19,4 +19,4 @@ Inter-Mod Support
 Credit
 ------
 Rongmario for help   
-Dane9t for animecolle and help
+Danek9t for animecolle and help
