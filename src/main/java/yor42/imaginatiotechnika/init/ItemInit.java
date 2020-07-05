@@ -16,14 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemInit {
-    //아이템 목록 어레이 선언
     public static final List<Item> ITEM_LIST = new ArrayList<Item>();
     public static final List<Item> TOOL_LIST = new ArrayList<Item>();
 
     public static final Item.ToolMaterial TOOL_D32 = EnumHelper.addToolMaterial("tool_d32", 3, 2043, 10.0F, 2.0F, 9);
     public static final Item.ToolMaterial TOOL_RMA7024 = EnumHelper.addToolMaterial("tool_rma7024", 3, 350, 7.0F, 2.0F, 18);
 
-    //기초 자원
+    //resource
     public static final Item pureoriginium = new ItemBase("pureoriginium", ImaginatioTechnika.ImaginatioResources);
     public static final Item d32_ingot = new ItemBase("d32_ingot", ImaginatioTechnika.ImaginatioResources);
     public static final Item d32_nugget = new ItemBase("d32_nugget", ImaginatioTechnika.ImaginatioResources);
@@ -32,7 +31,7 @@ public class ItemInit {
     public static final Item wisdomcube = new ItemBase("wisdomcube", ImaginatioTechnika.ImaginatioResources);
     public static final Item manganese_ingot = new ItemBase("manganese_ingot", ImaginatioTechnika.ImaginatioResources);
 
-    //도구
+    //tools
     public static final Item d32_pickaxe = new ToolPickaxe("d32_pickaxe", TOOL_D32, ImaginatioTechnika.ImaginatioTools);
     public static final Item d32_shovel = new ToolShovel("d32_shovel", TOOL_D32, ImaginatioTechnika.ImaginatioTools);
     public static final Item d32_axe = new ToolAxe("d32_axe", TOOL_D32, ImaginatioTechnika.ImaginatioTools, 8.0F, 0.8F);

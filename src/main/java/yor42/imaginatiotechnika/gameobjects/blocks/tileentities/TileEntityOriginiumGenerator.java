@@ -12,6 +12,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.fml.common.event.FMLEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import yor42.imaginatiotechnika.Configs;
@@ -29,7 +31,7 @@ public class TileEntityOriginiumGenerator extends TileEntity implements ITickabl
     //count of item slots
     public ItemStackHandler handler = new ItemStackHandler(1);
 
-    private MachineEnergyStorage storage = new MachineEnergyStorage(25000);
+    private MachineEnergyStorage storage = new MachineEnergyStorage(30000);
     public int energy = storage.getEnergyStored();
     private String name;
     public int Burntime;
@@ -44,16 +46,19 @@ public class TileEntityOriginiumGenerator extends TileEntity implements ITickabl
         boolean flag = this.isActive();
         boolean flag1 = false;
 
-
-        if (!handler.getStackInSlot(0).isEmpty() && isItemFuel(handler.getStackInSlot(0))){
-            if(this.energy < getMaxEnergyStored()) {
-                Burntime++;
-                flag1 = true;
-                if (Burntime == 100) {
-                    energy += getFuelValue(handler.getStackInSlot(0));
-                    handler.getStackInSlot(0).shrink(1);
-                    Burntime = 0;
+        if (!this.world.isRemote) {
+            if (!handler.getStackInSlot(0).isEmpty() && isItemFuel(handler.getStackInSlot(0))) {
+                if (this.energy < getMaxEnergyStored()) {
+                    Burntime++;
+                    flag1 = true;
+                    if (Burntime == 100) {
+                        energy += getFuelValue(handler.getStackInSlot(0));
+                        handler.getStackInSlot(0).shrink(1);
+                        Burntime = 0;
+                    }
                 }
+            } else {
+                Burntime = 0;
             }
         }
 

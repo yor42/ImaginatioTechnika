@@ -22,5 +22,5 @@ public class BlockInit {
     public static final Block INFUSER = new BlockInfuser("infuser");
 
     //liquid
-    public static final Block COLLAPSE_FLUID = new BlockFluids("collapse_fluid", FluidInit.COLLAPSE_FLUID, Material.LAVA);
+    public static final Block COLLAPSE_FLUID = new BlockFluids("collapse_fluid", FluidInit.COLLAPSE_FLUID, Material.WATER);
 }

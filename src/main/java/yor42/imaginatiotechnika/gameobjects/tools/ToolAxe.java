@@ -11,14 +11,10 @@ public class ToolAxe extends ItemAxe implements IHasModel {
 
     public ToolAxe(String name, ToolMaterial material, CreativeTabs Tab, float AttackDamage, float AttackSpeed) {
         super(material, AttackDamage, AttackSpeed);
-        //레지스트리 이름
         setRegistryName(name);
-        //크리에이티브 탭
         setCreativeTab(Tab);
-        //유니코드 이름 번역 키
         setUnlocalizedName(name);
 
-        //아이템 리스트에 추가
         ItemInit.ITEM_LIST.add(this);
     }
 
