@@ -19,6 +19,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import yor42.imaginatiotechnika.gameobjects.creativetabs.ImaginatioDiscs;
 import yor42.imaginatiotechnika.gameobjects.creativetabs.ImaginatioMachines;
 import yor42.imaginatiotechnika.gameobjects.creativetabs.ImaginatioResources;
 import yor42.imaginatiotechnika.gameobjects.creativetabs.ImaginatioTools;
@@ -30,6 +31,7 @@ import yor42.imaginatiotechnika.proxy.ClientProxy;
 import yor42.imaginatiotechnika.util.IHasModel;
 import yor42.imaginatiotechnika.util.handlers.GuiHandler;
 import yor42.imaginatiotechnika.util.handlers.RenderHandler;
+import yor42.imaginatiotechnika.util.handlers.SoundEventHandler;
 import yor42.imaginatiotechnika.util.handlers.TileEntityHandler;
 import yor42.imaginatiotechnika.world.gen.oreworldgen;
 
@@ -51,6 +53,7 @@ public class ImaginatioTechnika {
     public static final CreativeTabs ImaginatioResources = new ImaginatioResources("imaginatiotechnikaresources");
     public static final CreativeTabs ImaginatioTools = new ImaginatioTools("ImaginatioTools");
     public static final CreativeTabs ImaginatioMachines = new ImaginatioMachines("imaginatiotechnikamachines");
+    public static final CreativeTabs ImaginatioDiscs = new ImaginatioDiscs("ImaginatioDiscs");
 
     private static final Logger LOGGER = LogManager.getLogger();
 
@@ -82,6 +85,7 @@ public class ImaginatioTechnika {
      */
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        SoundEventHandler.registerSounds();
         NetworkRegistry.INSTANCE.registerGuiHandler(ImaginatioTechnika.INSTANCE, new GuiHandler());
         Oredict.registerOreDict();
 
@@ -105,29 +109,6 @@ public class ImaginatioTechnika {
     @Mod.EventHandler
     public void postinit(FMLPostInitializationEvent event) {
 
-    }
-
-    /**
-     * Forge will automatically look up and bind blocks to the fields in this class
-     * based on their registry name.
-     */
-    @GameRegistry.ObjectHolder(MOD_ID)
-    public static class Blocks {
-      /*
-          public static final MySpecialBlock mySpecialBlock = null; // placeholder for special block below
-      */
-    }
-
-    /**
-     * Forge will automatically look up and bind items to the fields in this class
-     * based on their registry name.
-     */
-    @GameRegistry.ObjectHolder(MOD_ID)
-    public static class Items {
-      /*
-          public static final ItemBlock mySpecialBlock = null; // itemblock for the block above
-          public static final MySpecialItem mySpecialItem = null; // placeholder for special item below
-      */
     }
 
     /**

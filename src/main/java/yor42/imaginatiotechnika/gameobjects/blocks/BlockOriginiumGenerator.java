@@ -36,6 +36,8 @@ public class BlockOriginiumGenerator extends BlockBase {
     public BlockOriginiumGenerator(String name) {
         super(name, Material.IRON, ImaginatioTechnika.ImaginatioMachines);
         setSoundType(SoundType.METAL);
+        setHardness(15.0F);
+        setResistance(25.0F);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING,  EnumFacing.NORTH).withProperty(ACTIVE, false));
     }
 

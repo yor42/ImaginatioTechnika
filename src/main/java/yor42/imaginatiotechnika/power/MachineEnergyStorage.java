@@ -24,17 +24,19 @@ public class MachineEnergyStorage extends EnergyStorage {
         super(capacity, maxReceive, maxExtract, energy);
     }
 
-    public void readfromNBT(NBTTagCompound compound){
-        this.energy = compound.getInteger("energy");
-        this.capacity = compound.getInteger("capacity");
-        this.maxReceive = compound.getInteger("maxReceive");
-        this.maxExtract = compound.getInteger("maxExtract");
+    public void readFromNBT(NBTTagCompound compound)
+    {
+        this.energy = compound.getInteger("Energy");
+        this.capacity = compound.getInteger("Capacity");
+        this.maxReceive = compound.getInteger("MaxReceive");
+        this.maxExtract = compound.getInteger("MaxExtract");
     }
 
-    public void writetoNBT(NBTTagCompound compound){
-        compound.setInteger("energy", this.energy);
-        compound.setInteger("capacity", this.capacity);
-        compound.setInteger("maxReceive", this.maxReceive);
-        compound.setInteger("maxExtract", this.maxExtract);
+    public void writeToNBT(NBTTagCompound compound)
+    {
+        compound.setInteger("Energy", this.energy);
+        compound.setInteger("Capacity", this.capacity);
+        compound.setInteger("MaxReceive", this.maxReceive);
+        compound.setInteger("MaxExtract", this.maxExtract);
     }
 }

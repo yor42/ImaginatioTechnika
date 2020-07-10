@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
 public class TileEntityInfuser extends TileEntity implements ITickable {
 
     public ItemStackHandler stackhandler = new ItemStackHandler(4);
-    public MachineEnergyStorage storage = new MachineEnergyStorage(25000);
+    public MachineEnergyStorage storage = new MachineEnergyStorage(10000, 300 , 0);
 
     ItemStack OutputItem = ItemStack.EMPTY;
     public int energy = storage.getEnergyStored();
@@ -119,7 +119,7 @@ public class TileEntityInfuser extends TileEntity implements ITickable {
         this.stackhandler.deserializeNBT(compound.getCompoundTag("Inventory"));
         this.progress = compound.getInteger("progress");
         this.name = compound.getString("name");
-        this.storage.readfromNBT(compound);
+        this.storage.readFromNBT(compound);
         this.energy = compound.getInteger("GUIEnergy");
     }
 
@@ -130,7 +130,7 @@ public class TileEntityInfuser extends TileEntity implements ITickable {
         compound.setTag("Inventory", this.stackhandler.serializeNBT());
         compound.setString("name", getDisplayName().toString());
         compound.setInteger("GUIEnergy",this.energy);
-        this.storage.writetoNBT(compound);
+        this.storage.writeToNBT(compound);
         return compound;
     }
 

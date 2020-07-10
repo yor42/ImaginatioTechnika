@@ -1,0 +1,14 @@
+{
+  "jukebox.othermusic.revenge":
+  {
+    "category": "record",
+    "subtitle": "music.imgtechnika.revenge",
+    "sounds": [{"name": "imgtechnika:jukebox/othermusic/revenge", "stream": true}]
+  },
+  "jukebox.othermusic.dontmineatnight":
+  {
+    "category": "record",
+    "subtitle": "music.imgtechnika.dontmineatnight",
+    "sounds": [{"name": "imgtechnika:jukebox/othermusic/dontmineatnight", "stream": true}]
+  }
+}

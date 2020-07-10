@@ -42,7 +42,7 @@ public class ContainerOriginiumGenenrator extends Container {
 
     @Override
     public boolean canInteractWith(EntityPlayer playerIn) {
-        return this.tileentity.isUseableByPlayer(playerIn);
+        return this.tileentity.isUsableByPlayer(playerIn);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class ContainerOriginiumGenenrator extends Container {
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
         ItemStack stack = ItemStack.EMPTY;
-        Slot slot = (Slot)this.inventorySlots.get(index);
+        Slot slot = this.inventorySlots.get(index);
 
         if(slot != null && slot.getHasStack())
         {
