@@ -16,10 +16,14 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import yor42.imaginatiotechnika.ImaginatioTechnika;
 import yor42.imaginatiotechnika.gameobjects.blocks.tileentities.TileEntityOriginiumGenerator;
 import net.minecraft.block.BlockFurnace;
@@ -58,10 +62,14 @@ public class BlockOriginiumGenerator extends BlockBase {
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if(!worldIn.isRemote){
-            playerIn.openGui(ImaginatioTechnika.INSTANCE, Data.GUI_ORIGINIUM_GENERATOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
-        }
+        if (!worldIn.isRemote) {
+            TileEntity tileentity = worldIn.getTileEntity(pos);
 
+            if (tileentity instanceof TileEntityOriginiumGenerator) {
+                playerIn.openGui(ImaginatioTechnika.INSTANCE, Data.GUI_ORIGINIUM_GENERATOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
+            }
+
+        }
         return true;
     }
 

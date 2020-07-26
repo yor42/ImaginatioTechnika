@@ -3,8 +3,11 @@ package yor42.imaginatiotechnika.gameobjects.blocks.tileentities;
 import net.minecraft.block.BlockFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
@@ -79,6 +82,25 @@ public class TileEntityOriginiumGenerator extends TileEntity implements ITickabl
             return Configs.POWERGEN.ORIGINIUM_BURNTIME;
         }
         else return 0;
+    }
+
+    @Override
+    public SPacketUpdateTileEntity getUpdatePacket() {
+        NBTTagCompound NBT = new NBTTagCompound();
+        NBT.setTag("Inventory", this.handler.serializeNBT());
+        NBT.setInteger("Burntime", Burntime);
+        NBT.setInteger("GUIEnergy", this.energy);
+        this.storage.writeToNBT(NBT);
+        return new SPacketUpdateTileEntity(getPos(), 1, NBT);
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt){
+        NBTTagCompound tag = pkt.getNbtCompound();
+        this.handler.deserializeNBT(tag.getCompoundTag("Inventory"));
+        this.Burntime = tag.getInteger("Burntime");
+        this.energy = tag.getInteger("GUIEnergy");
+        this.storage.readFromNBT(tag);
     }
 
     @Override
@@ -158,6 +180,16 @@ public class TileEntityOriginiumGenerator extends TileEntity implements ITickabl
             case 1:
                 this.Burntime = value;
         }
+    }
+
+    @Override
+    public NBTTagCompound getUpdateTag() {
+        return super.getUpdateTag();
+    }
+
+    @Override
+    public void handleUpdateTag(NBTTagCompound tag) {
+        super.handleUpdateTag(tag);
     }
 
     public boolean isUsableByPlayer(EntityPlayer player)

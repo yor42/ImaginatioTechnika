@@ -55,11 +55,12 @@ public class ContainerOriginiumGenenrator extends Container {
     {
         super.detectAndSendChanges();
 
-        for (IContainerListener iContainerListener : this.listeners) {
+        for (int i = 0; i < this.listeners.size(); ++i){
+            IContainerListener icontainerlistener = this.listeners.get(i);
             if (this.energy != this.tileentity.getField(0))
-                (iContainerListener).sendWindowProperty(this, 0, this.tileentity.getField(0));
+                icontainerlistener.sendWindowProperty(this, 0, this.tileentity.getField(0));
             if (this.Burntime != this.tileentity.getField(1))
-                (iContainerListener).sendWindowProperty(this, 1, this.tileentity.getField(1));
+                icontainerlistener.sendWindowProperty(this, 1, this.tileentity.getField(1));
         }
 
         this.energy = this.tileentity.getField(0);
