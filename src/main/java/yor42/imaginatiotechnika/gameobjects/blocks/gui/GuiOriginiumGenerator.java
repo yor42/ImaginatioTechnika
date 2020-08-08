@@ -3,13 +3,10 @@ package yor42.imaginatiotechnika.gameobjects.blocks.gui;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
-import yor42.imaginatiotechnika.Configs;
 import yor42.imaginatiotechnika.ImaginatioTechnika;
 import yor42.imaginatiotechnika.gameobjects.blocks.container.ContainerOriginiumGenenrator;
 import yor42.imaginatiotechnika.gameobjects.blocks.tileentities.TileEntityOriginiumGenerator;
-import yor42.imaginatiotechnika.power.MachineEnergyStorage;
 
 import java.util.Objects;
 
@@ -36,8 +33,11 @@ public class GuiOriginiumGenerator extends GuiContainer {
     }
 
     private int getBurnTimeScaled(int pixels){
-        int i = this.tileentity.Burntime;
-        return i!= 0? i*pixels/100 :0;
+        int i = this.tileentity.Progress;
+        if (i == tileentity.getMaxEnergyStored()){
+            i = 0;
+        }
+            return i != 0 ? i * pixels / 100 : 0;
     }
 
     private int getStoredPowerScaled(int pixels){

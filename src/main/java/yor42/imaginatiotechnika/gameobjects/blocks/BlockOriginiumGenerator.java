@@ -1,7 +1,6 @@
 package yor42.imaginatiotechnika.gameobjects.blocks;
 
-import com.google.common.base.Optional;
-import net.minecraft.block.Block;
+import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -10,39 +9,35 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import yor42.imaginatiotechnika.ImaginatioTechnika;
 import yor42.imaginatiotechnika.gameobjects.blocks.tileentities.TileEntityOriginiumGenerator;
-import net.minecraft.block.BlockFurnace;
 import yor42.imaginatiotechnika.init.BlockInit;
 import yor42.imaginatiotechnika.util.Data;
 
-import java.util.Collection;
 import java.util.Random;
 
 public class BlockOriginiumGenerator extends BlockBase {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
+    private final boolean isActive;
 
-    public BlockOriginiumGenerator(String name) {
+    public BlockOriginiumGenerator(String name, boolean isActive) {
         super(name, Material.IRON, ImaginatioTechnika.ImaginatioMachines);
         setSoundType(SoundType.METAL);
         setHardness(15.0F);
-        setResistance(25.0F);
+        setHarvestLevel("pickaxe", 2);
+        setResistance(20.0F);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING,  EnumFacing.NORTH).withProperty(ACTIVE, false));
+        this.isActive = isActive;
     }
 
     @Override
@@ -126,6 +121,9 @@ public class BlockOriginiumGenerator extends BlockBase {
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
         worldIn.setBlockState(pos,this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()),2);
+        if(stack.hasDisplayName()){
+            TileEntity tileEntity = worldIn.getTileEntity(pos);
+        }
     }
 
     @Override

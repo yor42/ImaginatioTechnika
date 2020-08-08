@@ -1,9 +1,7 @@
 package yor42.imaginatiotechnika.gameobjects.blocks.tileentities;
 
-import net.minecraft.block.BlockFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -15,12 +13,12 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import yor42.imaginatiotechnika.Configs;
 import yor42.imaginatiotechnika.gameobjects.blocks.BlockOriginiumGenerator;
 import yor42.imaginatiotechnika.init.ItemInit;
-import yor42.imaginatiotechnika.power.MachineEnergyStorage;
 
 import javax.annotation.Nullable;
 
@@ -30,14 +28,14 @@ public class TileEntityOriginiumGenerator extends TileEntity implements ITickabl
 
     //count of item slots
     public ItemStackHandler handler = new ItemStackHandler(1);
-    private MachineEnergyStorage storage = new MachineEnergyStorage(30000, 0 , 100);
+    private EnergyStorage storage = new EnergyStorage(30000, 0 , 100);
     public int energy = storage.getEnergyStored();
     private String Customname;
-    public int Burntime;
+    public int Progress;
 
     public boolean isActive()
     {
-        return this.Burntime > 0;
+        return this.Progress > 0;
     }
 
     @Override
@@ -47,13 +45,16 @@ public class TileEntityOriginiumGenerator extends TileEntity implements ITickabl
         if (!this.world.isRemote) {
             if (!handler.getStackInSlot(0).isEmpty() && isItemFuel(handler.getStackInSlot(0))) {
                 if (this.energy < getMaxEnergyStored()) {
-                    Burntime++;
+                    Progress++;
                     flag1 = true;
-                    if (Burntime == 100) {
+                    if (Progress == 100) {
                         energy += getFuelValue(handler.getStackInSlot(0));
                         handler.getStackInSlot(0).shrink(1);
-                        Burntime = 0;
+                        Progress = 0;
                     }
+                }
+                else{
+                    Progress = 0;
                 }
             }
         }
@@ -88,9 +89,8 @@ public class TileEntityOriginiumGenerator extends TileEntity implements ITickabl
     public SPacketUpdateTileEntity getUpdatePacket() {
         NBTTagCompound NBT = new NBTTagCompound();
         NBT.setTag("Inventory", this.handler.serializeNBT());
-        NBT.setInteger("Burntime", Burntime);
+        NBT.setInteger("Burntime", Progress);
         NBT.setInteger("GUIEnergy", this.energy);
-        this.storage.writeToNBT(NBT);
         return new SPacketUpdateTileEntity(getPos(), 1, NBT);
     }
 
@@ -98,9 +98,8 @@ public class TileEntityOriginiumGenerator extends TileEntity implements ITickabl
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt){
         NBTTagCompound tag = pkt.getNbtCompound();
         this.handler.deserializeNBT(tag.getCompoundTag("Inventory"));
-        this.Burntime = tag.getInteger("Burntime");
+        this.Progress = tag.getInteger("Burntime");
         this.energy = tag.getInteger("GUIEnergy");
-        this.storage.readFromNBT(tag);
     }
 
     @Override
@@ -131,10 +130,9 @@ public class TileEntityOriginiumGenerator extends TileEntity implements ITickabl
     public NBTTagCompound writeToNBT(NBTTagCompound compound){
         super.writeToNBT(compound);
         compound.setTag("Inventory", this.handler.serializeNBT());
-        compound.setInteger("Burntime", Burntime);
+        compound.setInteger("Progress", Progress);
         compound.setInteger("GUIEnergy", this.energy);
         compound.setString("Customname", getDisplayName().toString());
-        this.storage.writeToNBT(compound);
         return compound;
     }
 
@@ -142,10 +140,9 @@ public class TileEntityOriginiumGenerator extends TileEntity implements ITickabl
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
         this.handler.deserializeNBT(compound.getCompoundTag("Inventory"));
-        this.Burntime = compound.getInteger("Burntime");
+        this.Progress = compound.getInteger("Progress");
         this.energy = compound.getInteger("GUIEnergy");
         this.Customname =  compound.getString("Customname");
-        this.storage.readFromNBT(compound);
     }
 
     @Nullable
@@ -167,7 +164,7 @@ public class TileEntityOriginiumGenerator extends TileEntity implements ITickabl
             case 0:
                 return this.energy;
             case 1:
-                return this.Burntime;
+                return this.Progress;
             default:
                 return 0;
         }
@@ -178,7 +175,7 @@ public class TileEntityOriginiumGenerator extends TileEntity implements ITickabl
             case 0:
                 this.energy = value;
             case 1:
-                this.Burntime = value;
+                this.Progress = value;
         }
     }
 

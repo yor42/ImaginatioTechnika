@@ -18,7 +18,7 @@ public class BlockInit {
     public static final Block RMA7024_ORE = new BlockBase("rma7024_ore", Material.ROCK, CreativeTabs.BUILDING_BLOCKS);
 
     //machines
-    public static final Block ORIGINIUM_GENERATOR = new BlockOriginiumGenerator("originium_generator");
+    public static final Block ORIGINIUM_GENERATOR = new BlockOriginiumGenerator("originium_generator", false);
     public static final Block INFUSER = new BlockInfuser("infuser");
 
     //liquid
