@@ -18,6 +18,7 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.EnergyStorage;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import yor42.imaginatiotechnika.Configs;
@@ -30,10 +31,10 @@ import javax.annotation.Nullable;
 
 import static yor42.imaginatiotechnika.gameobjects.blocks.BlockOriginiumGenerator.FACING;
 
-public class TileEntityOriginiumGenerator extends TileEntityLockable implements ITickable  {
+public class TileEntityOriginiumGenerator extends TileEntityLockable implements ITickable, IEnergyStorage {
 
     //count of item slots
-    private int maxextract = 100;
+    private int maxextract = Configs.POWERGEN.OriginiumGenerator_maxextract;
     public ItemStackHandler handler = new ItemStackHandler(1);
     private EnergyStorage storage = new EnergyStorage(30000, 0 , maxextract);
     public int energy = storage.getEnergyStored();
@@ -54,8 +55,8 @@ public class TileEntityOriginiumGenerator extends TileEntityLockable implements 
                 if (this.energy < getMaxEnergyStored()) {
                     Progress++;
                     flag1 = true;
-                    if (Progress == 100) {
-                        energy += getFuelValue(handler.getStackInSlot(0));
+                    if (Progress == getBurnTime(handler.getStackInSlot(0))) {
+                        energy += Configs.POWERGEN.OriginiumGenerator_RFperItem;
                         handler.getStackInSlot(0).shrink(1);
                         Progress = 0;
                     }
@@ -90,8 +91,8 @@ public class TileEntityOriginiumGenerator extends TileEntityLockable implements 
         TileEntity tileEntity = world.getTileEntity(getPos().offset(enumfacing));
         if( tileEntity != null){
             if (tileEntity.hasCapability(CapabilityEnergy.ENERGY, state.getValue(FACING))){
-                if(storage.canExtract() && tileEntity.getCapability(CapabilityEnergy.ENERGY, state.getValue(FACING)).canReceive()){
-                   storage.extractEnergy(maxextract, false);
+                if(energy >= maxextract && tileEntity.getCapability(CapabilityEnergy.ENERGY, state.getValue(FACING)).canReceive()){
+                   extractEnergy(maxextract, false);
                    tileEntity.getCapability(CapabilityEnergy.ENERGY, state.getValue(FACING)).receiveEnergy(maxextract, false);
                 }
             }
@@ -99,10 +100,10 @@ public class TileEntityOriginiumGenerator extends TileEntityLockable implements 
     }
 
     private boolean isItemFuel(ItemStack item) {
-        return getFuelValue(item)>0;
+        return getBurnTime(item)>0;
     }
 
-    private int getFuelValue(ItemStack stack) {
+    private int getBurnTime(ItemStack stack) {
         if(stack.getItem() == ItemInit.pureoriginium){
             return Configs.POWERGEN.ORIGINIUM_BURNTIME;
         }
@@ -185,12 +186,38 @@ public class TileEntityOriginiumGenerator extends TileEntityLockable implements 
         return new TextComponentTranslation("container.originium_generator");
     }
 
+    @Override
+    public int receiveEnergy(int maxReceive, boolean simulate)
+    {
+        return 0;
+    }
+
+    @Override
+    public int extractEnergy(int maxExtract, boolean simulate)
+    {
+        if (!simulate)
+            energy -= maxExtract;
+        return maxExtract;
+    }
+
     public int getEnergyStored(){
         return this.energy;
     }
 
     public int getMaxEnergyStored(){
         return this.storage.getMaxEnergyStored();
+    }
+
+    @Override
+    public boolean canExtract()
+    {
+        return maxextract>0;
+    }
+
+    @Override
+    public boolean canReceive()
+    {
+        return false;
     }
 
     public int getField(int id){

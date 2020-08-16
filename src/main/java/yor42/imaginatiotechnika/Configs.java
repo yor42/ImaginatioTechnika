@@ -38,8 +38,12 @@ public class Configs {
 
         @Config.Comment("Total Burning time of Originium Generator")
         public int ORIGINIUM_BURNTIME = 1500;
-        @Config.Comment("Originium Generator's poutput per tick")
-        public int OriginiumGenerator_RFpertick = 500;
+        @Config.Comment("Originium Generator's output per tick")
+        public int OriginiumGenerator_RFperItem = 500;
+
+        @Config.Comment("Max Extract from Originium Generator")
+        public int OriginiumGenerator_maxextract = 100;
+
     }
 
     public static class Machines{
