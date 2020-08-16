@@ -13,6 +13,7 @@ import java.util.List;
 
 public class BlockInit {
     public static final List<Block> BLOCK_LIST = new ArrayList<>();
+    public static final List<Block> MACHINE_LIST = new ArrayList<>();
 
     public static final Block D32_BLOCK = new BlockBase("d32_block", Material.IRON, CreativeTabs.BUILDING_BLOCKS);
     public static final Block RMA7024_ORE = new BlockBase("rma7024_ore", Material.ROCK, CreativeTabs.BUILDING_BLOCKS);

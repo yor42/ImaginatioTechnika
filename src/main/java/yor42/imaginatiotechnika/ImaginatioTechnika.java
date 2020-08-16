@@ -126,6 +126,7 @@ public class ImaginatioTechnika {
        @SubscribeEvent
        public static void addBlocks(RegistryEvent.Register<Block> event) {
            event.getRegistry().registerAll(BlockInit.BLOCK_LIST.toArray(new Block[0]));
+           event.getRegistry().registerAll(BlockInit.MACHINE_LIST.toArray(new Block[0]));
            TileEntityHandler.registerTileentity();
        }
 
@@ -138,6 +139,12 @@ public class ImaginatioTechnika {
            }
 
            for(Block block: BlockInit.BLOCK_LIST){
+               if(block instanceof IHasModel){
+                   ((IHasModel)block).registerModels();
+               }
+           }
+
+           for(Block block: BlockInit.MACHINE_LIST){
                if(block instanceof IHasModel){
                    ((IHasModel)block).registerModels();
                }

@@ -1,15 +1,19 @@
 package yor42.imaginatiotechnika.gameobjects.blocks.tileentities;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import yor42.imaginatiotechnika.Configs;
@@ -20,10 +24,10 @@ import yor42.imaginatiotechnika.power.MachineEnergyStorage;
 
 import javax.annotation.Nullable;
 
-public class TileEntityInfuser extends TileEntity implements ITickable {
+public class TileEntityInfuser extends TileEntityLockable implements ITickable {
 
     public ItemStackHandler stackhandler = new ItemStackHandler(4);
-    public MachineEnergyStorage storage = new MachineEnergyStorage(10000, 300 , 0);
+    public EnergyStorage storage = new EnergyStorage(10000, 300 , 0);
 
     ItemStack OutputItem = ItemStack.EMPTY;
     public int energy = storage.getEnergyStored();
@@ -68,6 +72,9 @@ public class TileEntityInfuser extends TileEntity implements ITickable {
                     OutputItem = ItemStack.EMPTY;
                     progress = 0;
                 }
+                else if(progress > 800) {
+                    progress = 0;
+                }
             }
             else {
                 if (!inputs[0].isEmpty() && !inputs[1].isEmpty() && !inputs[2].isEmpty()) {
@@ -97,6 +104,16 @@ public class TileEntityInfuser extends TileEntity implements ITickable {
         return this.world.getTileEntity(this.pos) == this && player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64.0D;
     }
 
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public boolean hasCustomName() {
+        return false;
+    }
+
     @Nullable
     @Override
     public ITextComponent getDisplayName() {
@@ -119,7 +136,6 @@ public class TileEntityInfuser extends TileEntity implements ITickable {
         this.stackhandler.deserializeNBT(compound.getCompoundTag("Inventory"));
         this.progress = compound.getInteger("progress");
         this.name = compound.getString("name");
-        this.storage.readFromNBT(compound);
         this.energy = compound.getInteger("GUIEnergy");
     }
 
@@ -130,8 +146,62 @@ public class TileEntityInfuser extends TileEntity implements ITickable {
         compound.setTag("Inventory", this.stackhandler.serializeNBT());
         compound.setString("name", getDisplayName().toString());
         compound.setInteger("GUIEnergy",this.energy);
-        this.storage.writeToNBT(compound);
         return compound;
+    }
+
+    @Override
+    public int getSizeInventory() {
+        return 4;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return stackhandler.getStackInSlot(0).isEmpty() && stackhandler.getStackInSlot(1).isEmpty() && stackhandler.getStackInSlot(2).isEmpty() && stackhandler.getStackInSlot(4).isEmpty() ;
+    }
+
+    @Override
+    public ItemStack getStackInSlot(int index) {
+        return null;
+    }
+
+    @Override
+    public ItemStack decrStackSize(int index, int count) {
+        return null;
+    }
+
+    @Override
+    public ItemStack removeStackFromSlot(int index) {
+        return null;
+    }
+
+    @Override
+    public void setInventorySlotContents(int index, ItemStack stack) {
+
+    }
+
+    @Override
+    public int getInventoryStackLimit() {
+        return 0;
+    }
+
+    @Override
+    public boolean isUsableByPlayer(EntityPlayer player) {
+        return false;
+    }
+
+    @Override
+    public void openInventory(EntityPlayer player) {
+
+    }
+
+    @Override
+    public void closeInventory(EntityPlayer player) {
+
+    }
+
+    @Override
+    public boolean isItemValidForSlot(int index, ItemStack stack) {
+        return false;
     }
 
     public int getField(int id){
@@ -152,5 +222,25 @@ public class TileEntityInfuser extends TileEntity implements ITickable {
             case 1:
                 this.progress = value;
         }
+    }
+
+    @Override
+    public int getFieldCount() {
+        return 0;
+    }
+
+    @Override
+    public void clear() {
+
+    }
+
+    @Override
+    public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
+        return null;
+    }
+
+    @Override
+    public String getGuiID() {
+        return null;
     }
 }

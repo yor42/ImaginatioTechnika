@@ -25,17 +25,13 @@ import yor42.imaginatiotechnika.util.Data;
 
 import java.util.Random;
 
-public class BlockOriginiumGenerator extends BlockBase {
+public class BlockOriginiumGenerator extends BlockMachinebase {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
     private final boolean isActive;
 
     public BlockOriginiumGenerator(String name, boolean isActive) {
-        super(name, Material.IRON, ImaginatioTechnika.ImaginatioMachines);
-        setSoundType(SoundType.METAL);
-        setHardness(15.0F);
-        setHarvestLevel("pickaxe", 2);
-        setResistance(20.0F);
+        super(name);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING,  EnumFacing.NORTH).withProperty(ACTIVE, false));
         this.isActive = isActive;
     }
@@ -110,6 +106,11 @@ public class BlockOriginiumGenerator extends BlockBase {
 
     @Override
     public TileEntity createTileEntity(World world, IBlockState state){
+        return new TileEntityOriginiumGenerator();
+    }
+
+    @Override
+    public TileEntity createNewTileEntity(World worldIn, int meta){
         return new TileEntityOriginiumGenerator();
     }
 

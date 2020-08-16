@@ -26,14 +26,13 @@ import yor42.imaginatiotechnika.util.Data;
 
 import java.util.Random;
 
-public class BlockInfuser extends BlockBase {
+public class BlockInfuser extends BlockMachinebase {
 
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
     public BlockInfuser(String name) {
-        super(name, Material.IRON, ImaginatioTechnika.ImaginatioMachines);
-        setSoundType(SoundType.METAL);
+        super(name);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING,  EnumFacing.NORTH).withProperty(ACTIVE, false));
     }
 
@@ -93,6 +92,10 @@ public class BlockInfuser extends BlockBase {
 
     @Override
     public TileEntity createTileEntity(World world, IBlockState state){
+        return new TileEntityInfuser();
+    }
+
+    public TileEntity createNewTileEntity(World worldIn, int meta){
         return new TileEntityInfuser();
     }
 

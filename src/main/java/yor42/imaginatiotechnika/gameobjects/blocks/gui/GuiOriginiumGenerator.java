@@ -16,6 +16,7 @@ public class GuiOriginiumGenerator extends GuiContainer {
     private final InventoryPlayer player;
     private final TileEntityOriginiumGenerator tileentity;
 
+
     public GuiOriginiumGenerator(InventoryPlayer player, TileEntityOriginiumGenerator tileentity) {
         super(new ContainerOriginiumGenenrator(player, tileentity));
         this.player = player;
@@ -27,9 +28,9 @@ public class GuiOriginiumGenerator extends GuiContainer {
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         super.drawGuiContainerForegroundLayer(mouseX, mouseY);
         String tileName = Objects.requireNonNull(this.tileentity.getDisplayName()).getUnformattedText();
-        this.fontRenderer.drawString(tileName, (this.xSize/2 - this.fontRenderer.getStringWidth(tileName))/2,6, 16777215);
+        this.fontRenderer.drawString(tileName, (this.xSize/2 - this.fontRenderer.getStringWidth(tileName))/2+10,6, 16777215);
         this.fontRenderer.drawString(this.player.getDisplayName().getUnformattedText(),7,this.ySize-94,16777215);
-        this.fontRenderer.drawString(this.tileentity.getEnergyStored() +"/"+this.tileentity.getMaxEnergyStored()+" FE",90,72,16777215);
+        this.fontRenderer.drawString(this.tileentity.getEnergyStored() +"/"+this.tileentity.getMaxEnergyStored()+" FE",70,72,16777215);
     }
 
     private int getBurnTimeScaled(int pixels){

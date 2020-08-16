@@ -37,6 +37,13 @@ minecraft {
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
+repositories {
+    maven {
+        name = "CoFH Maven"
+        url = "https://maven.covers1624.net"
+    }
+}
+
 dependencies {
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
@@ -54,10 +61,11 @@ dependencies {
     // except that these dependencies get remapped to your current MCP mappings
     //deobfCompile 'com.mod-buildcraft:buildcraft:6.0.8:dev'
     //deobfProvided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-
+    compile fileTree(dir: 'libs', include: ['RedstoneFlux-1.12-2.1.0.7-deobf.jar'])
     compile fileTree(dir: 'libs', include: ['AnimColle Legacy 1.0.0 patch 7 Official Release-deobf.jar'])
     compile fileTree(dir: 'libs', include: ['Furenzu-pre0.4b3a2-deobf.jar'])
     compile fileTree(dir: 'libs', include: ['ShinColle-1.12.2.1.0-deobf.jar'])
+
 
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
